@@ -144,7 +144,6 @@ export function MarketBenchmark() {
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-3">Quick Answer</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              <strong>Yes, there ARE solutions like this in the market, but none are comprehensive.</strong> 
               Seven major competitors have built solutions addressing parts of the hospital room turnover problem, 
               but none provide the complete orchestration that AI Supervisor delivers.
             </p>
