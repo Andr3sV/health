@@ -33,7 +33,7 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const sections = [
+const deliverables = [
   {
     id: 0,
     title: "Executive Summary",
@@ -82,6 +82,9 @@ const sections = [
     icon: Map,
     description: "MVP through Phase 7 implementation plan",
   },
+]
+
+const bonusSections = [
   {
     id: 8,
     title: "Success Factors",
@@ -101,6 +104,8 @@ const sections = [
     description: "ROI analysis and financial justification",
   },
 ]
+
+const allSections = [...deliverables, ...bonusSections]
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   currentSection: number
@@ -138,12 +143,53 @@ export function AppSidebar({ currentSection, onSectionChange, ...props }: AppSid
       </SidebarHeader>
       
       <SidebarContent className="flex flex-col">
-        {/* Content */}
+        {/* Deliverables */}
         <SidebarGroup>
-          <SidebarGroupLabel className="px-2">Content</SidebarGroupLabel>
+          <SidebarGroupLabel className="px-2">Deliverables</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {sections.map((section) => {
+              {deliverables.map((section) => {
+                const Icon = section.icon
+                const isActive = currentSection === section.id
+                
+                return (
+                  <SidebarMenuItem key={section.id}>
+                    <SidebarMenuButton
+                      onClick={() => onSectionChange(section.id)}
+                      tooltip={state === "collapsed" ? section.title : undefined}
+                      isActive={isActive}
+                      className={cn(
+                        "w-full justify-start",
+                        isActive && "bg-gradient-to-r from-blue-500/10 to-green-500/10 border-l-4 border-blue-500"
+                      )}
+                    >
+                      <Icon className={cn(
+                        "w-5 h-5 flex-shrink-0",
+                        isActive && "text-blue-600"
+                      )} />
+                      {state === "expanded" && (
+                        <>
+                          <span className="ml-2 font-medium">{section.title}</span>
+                          <ChevronRight className={cn(
+                            "ml-auto w-4 h-4 transition-transform",
+                            isActive && "translate-x-1"
+                          )} />
+                        </>
+                      )}
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* Bonus */}
+        <SidebarGroup>
+          <SidebarGroupLabel className="px-2">Bonus</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {bonusSections.map((section) => {
                 const Icon = section.icon
                 const isActive = currentSection === section.id
                 
@@ -187,7 +233,7 @@ export function AppSidebar({ currentSection, onSectionChange, ...props }: AppSid
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs text-muted-foreground">Progress</span>
                   <span className="text-xs font-medium text-muted-foreground">
-                    {currentSection + 1} / {sections.length}
+                    {currentSection + 1} / {allSections.length}
                   </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
@@ -195,7 +241,7 @@ export function AppSidebar({ currentSection, onSectionChange, ...props }: AppSid
                     className="h-full bg-gradient-to-r from-blue-500 to-green-500 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ 
-                      width: `${((currentSection + 1) / sections.length) * 100}%` 
+                      width: `${((currentSection + 1) / allSections.length) * 100}%` 
                     }}
                     transition={{ duration: 0.3 }}
                   />
