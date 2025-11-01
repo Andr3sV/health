@@ -16,17 +16,19 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { 
-  FileText, 
-  Sparkles, 
-  Building2, 
+import {
+  FileText,
+  Sparkles,
+  Building2,
   Home,
   ChevronRight,
   Search,
   TrendingUp,
   BarChart3,
   Shield,
-  Map
+  Map,
+  Target,
+  Globe
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -78,6 +80,18 @@ const sections = [
     title: "Phase Roadmap",
     icon: Map,
     description: "MVP through Phase 7 implementation plan",
+  },
+  {
+    id: 8,
+    title: "Success Factors",
+    icon: Target,
+    description: "Critical success factors and assumptions",
+  },
+  {
+    id: 9,
+    title: "Market Benchmark",
+    icon: Globe,
+    description: "Competitive analysis and market comparison",
   },
 ]
 

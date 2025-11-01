@@ -386,7 +386,7 @@ export function PhaseRoadmap() {
                     </div>
                     
                     {/* Phase Card */}
-                    <div className={`flex-1 p-4 rounded-lg bg-gradient-to-br ${phase.bgColor} border-2 ${phase.borderColor} ${isMVP ? 'shadow-lg ring-2 ring-blue-200/50' : 'shadow-md'} relative`}>
+                    <div className={`flex-1 p-4 rounded-lg bg-gradient-to-br ${phase.bgColor} border-2 ${phase.borderColor} shadow-md`}>
                       {/* MVP Label on Card */}
                       {isMVP && (
                         <div className="absolute -top-2 left-4">

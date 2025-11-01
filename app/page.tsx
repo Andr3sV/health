@@ -9,6 +9,8 @@ import { AgenticSuperiority } from '@/components/AgenticSuperiority';
 import { SuccessMetrics } from '@/components/SuccessMetrics';
 import { RiskMitigation } from '@/components/RiskMitigation';
 import { PhaseRoadmap } from '@/components/PhaseRoadmap';
+import { CriticalSuccessFactors } from '@/components/CriticalSuccessFactors';
+import { MarketBenchmark } from '@/components/MarketBenchmark';
 import { SidebarLayout } from '@/components/SidebarLayout';
 import { useState } from 'react';
 
@@ -24,6 +26,8 @@ export default function Home() {
     { id: 5, component: <SuccessMetrics />, title: 'Success Metrics' },
     { id: 6, component: <RiskMitigation />, title: 'Risk Mitigation' },
     { id: 7, component: <PhaseRoadmap />, title: 'Phase Roadmap' },
+    { id: 8, component: <CriticalSuccessFactors />, title: 'Success Factors' },
+    { id: 9, component: <MarketBenchmark />, title: 'Market Benchmark' },
   ];
 
   return (
