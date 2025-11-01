@@ -28,7 +28,8 @@ import {
   Shield,
   Map,
   Target,
-  Globe
+  Globe,
+  DollarSign
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -47,9 +48,9 @@ const sections = [
   },
   {
     id: 2,
-    title: "Architecture & UX",
+    title: "Solution and Features",
     icon: Building2,
-    description: "System design and user experience",
+    description: "Solution design and key features",
   },
   {
     id: 3,
@@ -92,6 +93,12 @@ const sections = [
     title: "Market Benchmark",
     icon: Globe,
     description: "Competitive analysis and market comparison",
+  },
+  {
+    id: 10,
+    title: "Financial Justification",
+    icon: DollarSign,
+    description: "ROI analysis and financial justification",
   },
 ]
 

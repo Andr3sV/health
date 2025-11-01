@@ -11,6 +11,7 @@ import { RiskMitigation } from '@/components/RiskMitigation';
 import { PhaseRoadmap } from '@/components/PhaseRoadmap';
 import { CriticalSuccessFactors } from '@/components/CriticalSuccessFactors';
 import { MarketBenchmark } from '@/components/MarketBenchmark';
+import { FinancialJustification } from '@/components/FinancialJustification';
 import { SidebarLayout } from '@/components/SidebarLayout';
 import { useState } from 'react';
 
@@ -20,7 +21,7 @@ export default function Home() {
   const sections = [
     { id: 0, component: <ExecutiveSummary />, title: 'Executive Summary' },
     { id: 1, component: <AgenticVision />, title: 'Agentic AI Vision' },
-    { id: 2, component: <ArchitectureUX />, title: 'Architecture & UX' },
+    { id: 2, component: <ArchitectureUX />, title: 'Solution and Features' },
     { id: 3, component: <UserResearch />, title: 'User Research' },
     { id: 4, component: <AgenticSuperiority />, title: 'Why Agentic AI' },
     { id: 5, component: <SuccessMetrics />, title: 'Success Metrics' },
@@ -28,6 +29,7 @@ export default function Home() {
     { id: 7, component: <PhaseRoadmap />, title: 'Phase Roadmap' },
     { id: 8, component: <CriticalSuccessFactors />, title: 'Success Factors' },
     { id: 9, component: <MarketBenchmark />, title: 'Market Benchmark' },
+    { id: 10, component: <FinancialJustification />, title: 'Financial Justification' },
   ];
 
   return (

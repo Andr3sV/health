@@ -113,7 +113,7 @@ export function ArchitectureUX() {
         className="text-center mb-16"
       >
         <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-green-600 to-purple-600 bg-clip-text text-transparent">
-          Architecture and User Experience
+          Solution and Features
         </h1>
         <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
           How AI Supervisor transforms reactive chaos into proactive coordination
