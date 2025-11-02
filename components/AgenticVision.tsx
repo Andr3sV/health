@@ -179,7 +179,7 @@ export function AgenticVision() {
               <RadarChart data={comparisonData}>
                 <PolarGrid stroke="#e5e7eb" />
                 <PolarAngleAxis dataKey="capability" tick={{ fill: '#6b7280', fontSize: 11 }} />
-                <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fill: '#6b7280' }} />
+                <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} />
                 <Radar
                   name="Traditional"
                   dataKey="traditional"

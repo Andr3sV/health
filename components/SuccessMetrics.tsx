@@ -241,6 +241,8 @@ function MetricSection({ title, subtitle, metrics, delay }: {
   metrics: any[];
   delay: number;
 }) {
+  const [expandedCard, setExpandedCard] = React.useState<number | null>(null);
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -258,7 +260,10 @@ function MetricSection({ title, subtitle, metrics, delay }: {
           <MetricCard 
             key={`${title}-${metric.id}-${index}`} 
             metric={metric} 
-            index={index} 
+            index={index}
+            isExpanded={expandedCard === metric.id}
+            onExpand={() => setExpandedCard(expandedCard === metric.id ? null : metric.id)}
+            showContent={expandedCard !== null}
           />
         ))}
       </div>
@@ -267,9 +272,14 @@ function MetricSection({ title, subtitle, metrics, delay }: {
 }
 
 // Metric Card Component
-function MetricCard({ metric, index }: { metric: any; index: number }) {
+function MetricCard({ metric, index, isExpanded, onExpand, showContent }: { 
+  metric: any; 
+  index: number;
+  isExpanded: boolean;
+  onExpand: () => void;
+  showContent: boolean;
+}) {
   const Icon = metric.icon;
-  const [isExpanded, setIsExpanded] = React.useState(false);
 
   // Calculate max value for chart scaling
   const maxValue = Math.max(metric.currentValue, metric.targetValue) * 1.3;
@@ -281,10 +291,10 @@ function MetricCard({ metric, index }: { metric: any; index: number }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className={`rounded-2xl border-2 ${metric.borderColor} bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all`}
+      className={`rounded-2xl border-2 ${metric.borderColor} bg-gradient-to-br ${metric.bgColor} overflow-hidden shadow-lg hover:shadow-xl transition-all`}
     >
       {/* Card Header - More Compact */}
-      <div className={`p-5 bg-gradient-to-br ${metric.bgColor} border-b-2 ${metric.borderColor}`}>
+      <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-start gap-3 flex-1">
             <div className={`p-2.5 rounded-xl bg-gradient-to-br ${metric.color} shadow-md flex-shrink-0`}>
@@ -350,8 +360,8 @@ function MetricCard({ metric, index }: { metric: any; index: number }) {
 
         {/* Expand Button */}
         <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full mt-3 pt-3 border-t border-gray-200/50 text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors flex items-center justify-center gap-2"
+          onClick={onExpand}
+          className="w-full mt-3 pt-3 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center justify-center gap-2 bg-white/40 hover:bg-white/60 rounded-lg"
         >
           <span>{isExpanded ? 'Less Details' : 'More Details'}</span>
           <motion.span
@@ -363,19 +373,19 @@ function MetricCard({ metric, index }: { metric: any; index: number }) {
         </button>
       </div>
 
-      {/* Expanded Content - Better Organized */}
-      <motion.div
-        initial={false}
-        animate={{
-          height: isExpanded ? 'auto' : 0,
-          opacity: isExpanded ? 1 : 0,
-          marginTop: isExpanded ? 0 : 0
-        }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="overflow-hidden"
-      >
-        {isExpanded && (
-          <div className="p-5 bg-gray-50 space-y-4">
+      {/* Expanded Content - Always show when any card is expanded */}
+      {(showContent || isExpanded) && (
+        <motion.div
+          initial={false}
+          animate={{
+            height: 'auto',
+            opacity: 1,
+            marginTop: 0
+          }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="overflow-hidden"
+        >
+          <div className={`p-5 bg-gradient-to-br ${metric.bgColor} space-y-4`}>
             {/* Definition */}
             <div className="p-3 rounded-lg bg-white border border-gray-200">
               <h4 className="text-sm font-semibold text-gray-800 mb-2 flex items-center gap-2">
@@ -430,8 +440,8 @@ function MetricCard({ metric, index }: { metric: any; index: number }) {
               </div>
             )}
           </div>
-        )}
-      </motion.div>
+        </motion.div>
+      )}
     </motion.div>
   );
 }

@@ -10,6 +10,7 @@ import { SuccessMetrics } from '@/components/SuccessMetrics';
 import { RiskMitigation } from '@/components/RiskMitigation';
 import { PhaseRoadmap } from '@/components/PhaseRoadmap';
 import { CriticalSuccessFactors } from '@/components/CriticalSuccessFactors';
+import { Reflections } from '@/components/Reflections';
 import { MarketBenchmark } from '@/components/MarketBenchmark';
 import { FinancialJustification } from '@/components/FinancialJustification';
 import { SidebarLayout } from '@/components/SidebarLayout';
@@ -28,8 +29,9 @@ export default function Home() {
     { id: 6, component: <RiskMitigation />, title: 'Risk Mitigation' },
     { id: 7, component: <PhaseRoadmap />, title: 'Phase Roadmap' },
     { id: 8, component: <CriticalSuccessFactors />, title: 'Success Factors' },
-    { id: 9, component: <MarketBenchmark />, title: 'Market Benchmark' },
-    { id: 10, component: <FinancialJustification />, title: 'Financial Justification' },
+    { id: 9, component: <Reflections />, title: 'Reflections on AI' },
+    { id: 10, component: <MarketBenchmark />, title: 'Market Benchmark' },
+    { id: 11, component: <FinancialJustification />, title: 'Financial Justification' },
   ];
 
   return (
